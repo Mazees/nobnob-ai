@@ -10,6 +10,13 @@
   --color-primary-hover: #771957;
   --color-primary-foreground: #ffffff;
   --color-sidebar: #f7e9f3;
+  --color-sidebar-foreground: #554b55;
+  --color-sidebar-active: #efd6e9;
+  --color-sidebar-active-foreground: #741953;
+  --color-sidebar-surface: #fff9fe;
+  --color-sidebar-border: #eadce7;
+  --color-sidebar-avatar-border: #e3c6d8;
+  --color-sidebar-avatar-foreground: #682350;
   --color-accent: #fdf0fa;
   --color-sky-soft: #e8f7fc;
   --color-coral-soft: #fceceb;
