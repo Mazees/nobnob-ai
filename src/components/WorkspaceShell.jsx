@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 const sections = [
   { label: "Dashboard", icon: <Icon><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" /></Icon>, href: "/dashboard" },
-  { label: "Posts", icon: <Icon><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 12h7m-7 4h5" /></Icon> },
+  { label: "Posts", href: "/dashboard/posts", icon: <Icon><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 12h7m-7 4h5" /></Icon> },
   { label: "Calendar", icon: <Icon><path d="M4 5h16v16H4zM8 3v4m8-4v4M4 10h16m-11 5h2m3 0h2" /></Icon> },
   { label: "Accounts", icon: <Icon><path d="M10 13a4 4 0 0 0 6 0l3-3a4 4 0 0 0-6-6l-1 1M14 11a4 4 0 0 0-6 0l-3 3a4 4 0 0 0 6 6l1-1" /></Icon> },
   { label: "Analytics", icon: <Icon><path d="M4 4v16h16M8 16v-3m4 3V9m4 7V6" /></Icon> },
@@ -43,7 +43,7 @@ function Sidebar({ active, close }) {
           {sections.map(({ label, icon, href }) => (
             <li key={label}>
               {href ? (
-                <Link href={href} onClick={close} aria-current={active === href ? "page" : undefined}
+                <Link href={href} onClick={close} aria-current={(active === href || (href !== "/dashboard" && active.startsWith(`${href}/`))) ? "page" : undefined}
                   className={`${itemStyle} text-sidebar-foreground hover:bg-accent aria-[current=page]:bg-sidebar-active aria-[current=page]:font-bold aria-[current=page]:text-sidebar-active-foreground`}>
                   {icon}{label}
                 </Link>
@@ -86,7 +86,7 @@ export function WorkspaceShell({ children }) {
   const pathname = usePathname();
   const drawer = useRef(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const current = sections.find(({ href }) => href === pathname);
+  const current = sections.find(({ href }) => (href === pathname || (href && href !== "/dashboard" && pathname.startsWith(`${href}/`))));
   const closeDrawer = () => drawer.current?.close();
 
   useEffect(() => {

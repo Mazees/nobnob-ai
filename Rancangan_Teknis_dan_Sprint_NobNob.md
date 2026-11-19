@@ -261,6 +261,9 @@ Pengeditan jadwal Calendar memakai PATCH /api/posts/[id] milik Mada, sehingga at
 
 ### 5.3 Penautan video atomik
 
+**Tahap implementasi CRUD Posts:** penautan sementara memeriksa format link penuh `https://www.tiktok.com/@username/video/ID` di browser dan server. Query string serta fragmen dibuang. Post Terjadwal langsung menjadi Sudah Upload setelah format valid; UI menyatakan kepemilikan belum diperiksa melalui TikTok API. Integrasi resolver/verifikasi kepemilikan pada alur di bawah dikerjakan setelah CRUD. Indeks unik ID video tetap menjadi penjamin konflik 409, termasuk request bersamaan. PATCH memakai `updated_at` sebagai kondisi update untuk mencegah perubahan bersamaan tertimpa, tanpa menambah kolom version.
+
+
 1. Novan menyediakan service verifikasi link/ID video terhadap akun terhubung.
 2. Endpoint Mada memeriksa Post dan hubungan video.
 3. Server memeriksa keanggotaan aktif dan kepemilikan video melalui TikTok API, lalu memperbarui `video_url` dan `status = uploaded` dalam satu operasi database. Konflik ID video mengembalikan 409.

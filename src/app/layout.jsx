@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { MuseoModerno, Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -16,7 +17,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="id" className={`${museo.variable} ${poppins.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Script id="post-navigation-guard" strategy="beforeInteractive">
+          {`window.addEventListener("popstate", function(event) {
+            window.__nobnobPostHistoryGuard?.(event);
+          }, true);`}
+        </Script>
+        {children}
+      </body>
     </html>
   );
 }

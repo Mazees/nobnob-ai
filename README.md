@@ -46,3 +46,22 @@ Aplikasi web untuk membantu UMKM mengelola konten TikTok, mulai dari menyusun id
 ## Branch tim
 
 Sebelum mulai mengerjakan tugas, pindah ke branch masing-masing (`dev-mada`, `dev-cleo`, atau `dev-novan`) dan ambil perubahan terbaru dengan `git pull origin staging`. Buka PR ke `staging` setelah tugas selesai dan diuji.
+
+## CRUD Posts
+
+Halaman `/dashboard/posts` memakai data Supabase dengan sesi pengguna dan whitelist aktif. Sebelum mencoba simpan, Mada perlu mereview lalu menjalankan `sql/posts_member_mutations.sql` setelah schema awal. SQL tambahan ini menyediakan izin dan policy INSERT, UPDATE, DELETE untuk anggota aktif. Jangan menjalankan ulang schema awal pada database yang sudah terisi.
+
+Tahap ini memvalidasi format link video TikTok penuh. Kepemilikan video, statistik TikTok, prediksi baru, dan penyimpanan ide AI Studio menyusul.
+
+## Pemeriksaan sebelum PR
+
+```bash
+npm run lint
+npm run test
+npm run build
+npm run test:browser
+```
+
+`npm run test` menguji validasi, service Posts, dan policy RLS pada PostgreSQL lokal dalam memori (PGlite). `npm run test:browser` menjalankan aplikasi asli pada port 3101 serta fixture Auth/PostgREST lokal pada port 54329. Kedua pengujian tidak mengakses atau mengubah Supabase tim dan tidak memakai konfigurasi rahasia dari `.env.local`. Pastikan kedua port kosong. Browser test menggunakan Google Chrome; jika belum terpasang, pasang Chrome atau sesuaikan `channel` pada `playwright.config.mjs` dengan browser Playwright yang tersedia.
+
+Pengujian pada Supabase tim dilakukan setelah SQL tambahan diterapkan dan akun Google sudah diberi akses. Cek buat, edit, jadwalkan, konfirmasi upload, hapus, serta reload dengan akun tersebut.
