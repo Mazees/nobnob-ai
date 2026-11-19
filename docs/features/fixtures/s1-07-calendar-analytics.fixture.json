@@ -1,0 +1,345 @@
+{
+  "_simulation": true,
+  "_status": "DRAFT_REVIEW_S1_07",
+  "_note": "SIMULASI DRAF KONTRAK S1-07 — bukan data TikTok nyata. Menunggu review Mada dan Novan.",
+  "calendar": {
+    "request_query": {
+      "from": "2026-11-01",
+      "to": "2026-11-30",
+      "statuses": ["scheduled", "uploaded"]
+    },
+    "response": {
+      "data": {
+        "items": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "title": "Promo Paket Makan Siang Jumat",
+            "status": "scheduled",
+            "status_label": "Terjadwal",
+            "scheduled_at": "2026-11-20T11:30:00+07:00",
+            "scheduled_date_wib": "2026-11-20",
+            "scheduled_time_wib": "11:30",
+            "duration_seconds": 45,
+            "video_url": null,
+            "video_id": null,
+            "can_reschedule": true,
+            "updated_at": "2026-11-19T10:15:00+07:00"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "title": "Review Menu Baru Kopi Susu",
+            "status": "uploaded",
+            "status_label": "Sudah Upload",
+            "scheduled_at": "2026-11-18T19:00:00+07:00",
+            "scheduled_date_wib": "2026-11-18",
+            "scheduled_time_wib": "19:00",
+            "duration_seconds": 60,
+            "video_url": "https://www.tiktok.com/@kedainobnob/video/7438291045678901234",
+            "video_id": "7438291045678901234",
+            "can_reschedule": false,
+            "updated_at": "2026-11-18T19:05:00+07:00"
+          }
+        ]
+      },
+      "meta": {
+        "timezone": "Asia/Jakarta",
+        "from_wib": "2026-11-01",
+        "to_wib": "2026-11-30",
+        "range_start": "2026-11-01T00:00:00+07:00",
+        "range_end_exclusive": "2026-12-01T00:00:00+07:00",
+        "total_items": 2
+      }
+    },
+    "reschedule_patch_request": {
+      "endpoint": "PATCH /api/posts/11111111-1111-4111-8111-111111111111",
+      "body": {
+        "scheduled_at": "2026-11-22T18:00:00+07:00"
+      }
+    }
+  },
+  "novan_tiktok_input_sample": {
+    "account": {
+      "status": "connected",
+      "open_id": "tt_open_001",
+      "display_name": "Kedai NobNob"
+    },
+    "fetch_meta": {
+      "fetch_status": "partial",
+      "fetched_at": "2026-11-19T16:00:00+07:00",
+      "source": "simulation_fixture",
+      "error": {
+        "code": "TIKTOK_PARTIAL_TIMEOUT",
+        "message": "Sebagian statistik video gagal diambil dari TikTok."
+      }
+    },
+    "videos": [
+      {
+        "video_id": "7438291045678901234",
+        "video_url": "https://www.tiktok.com/@kedainobnob/video/7438291045678901234",
+        "published_at": "2026-11-18T19:00:00+07:00",
+        "metrics": {
+          "views": 12400,
+          "likes": 850,
+          "comments": 42,
+          "shares": 19
+        },
+        "metrics_state": "ok"
+      },
+      {
+        "video_id": "7438291045678905678",
+        "video_url": "https://www.tiktok.com/@kedainobnob/video/7438291045678905678",
+        "published_at": "2026-11-15T12:15:00+07:00",
+        "metrics": {
+          "views": 300,
+          "likes": 0,
+          "comments": null,
+          "shares": 0
+        },
+        "metrics_state": "partial"
+      },
+      {
+        "video_id": "7438291045678908888",
+        "video_url": "https://www.tiktok.com/@kedainobnob/video/7438291045678908888",
+        "published_at": "2026-11-19T09:00:00+07:00",
+        "metrics": {
+          "views": 500,
+          "likes": 25,
+          "comments": 3,
+          "shares": 1
+        },
+        "metrics_state": "ok",
+        "_note": "Video ini belum ditautkan ke Post mana pun sehingga tidak dihitung di Analytics/Dashboard."
+      }
+    ]
+  },
+  "analytics_scenarios": {
+    "partial_7d": {
+      "data": {
+        "state": "partial",
+        "period": {
+          "preset": "7d",
+          "from_wib": "2026-11-13",
+          "to_wib": "2026-11-19",
+          "timezone": "Asia/Jakarta"
+        },
+        "coverage": {
+          "linked_posts_count": 3,
+          "deduplicated_videos_count": 3,
+          "resolved_count": 2,
+          "matched_period_count": 2,
+          "unresolved_count": 1,
+          "is_complete": false
+        },
+        "totals": {
+          "views": { "value": 12700, "status": "partial", "available_count": 2, "missing_count": 1 },
+          "likes": { "value": 850, "status": "partial", "available_count": 2, "missing_count": 1 },
+          "comments": { "value": 42, "status": "partial", "available_count": 1, "missing_count": 2 },
+          "shares": { "value": 19, "status": "partial", "available_count": 2, "missing_count": 1 }
+        },
+        "top_videos": [
+          {
+            "post_id": "22222222-2222-4222-8222-222222222222",
+            "post_title": "Review Menu Baru Kopi Susu",
+            "video_id": "7438291045678901234",
+            "video_url": "https://www.tiktok.com/@kedainobnob/video/7438291045678901234",
+            "published_at": "2026-11-18T19:00:00+07:00",
+            "published_date_wib": "2026-11-18",
+            "metrics": { "views": 12400, "likes": 850, "comments": 42, "shares": 19 },
+            "metrics_state": "ok"
+          },
+          {
+            "post_id": "33333333-3333-4333-8333-333333333333",
+            "post_title": "Teaser Minuman Sore",
+            "video_id": "7438291045678905678",
+            "video_url": "https://www.tiktok.com/@kedainobnob/video/7438291045678905678",
+            "published_at": "2026-11-15T12:15:00+07:00",
+            "published_date_wib": "2026-11-15",
+            "metrics": { "views": 300, "likes": 0, "comments": null, "shares": 0 },
+            "metrics_state": "partial"
+          }
+        ],
+        "unresolved_videos": [
+          {
+            "post_id": "44444444-4444-4444-8444-444444444444",
+            "post_title": "Promo Akhir Pekan",
+            "video_id": "7438291045678909999",
+            "reason": "missing_in_tiktok_response"
+          }
+        ]
+      },
+      "meta": {
+        "fetched_at": "2026-11-19T16:00:00+07:00",
+        "fetch_status": "partial",
+        "source": "simulation_fixture",
+        "is_stale": false,
+        "error": {
+          "code": "TIKTOK_PARTIAL_TIMEOUT",
+          "message": "Sebagian statistik video gagal diambil dari TikTok."
+        }
+      }
+    },
+    "complete_zero_metrics_example": {
+      "data": {
+        "state": "complete",
+        "period": {
+          "preset": "7d",
+          "from_wib": "2026-11-13",
+          "to_wib": "2026-11-19",
+          "timezone": "Asia/Jakarta"
+        },
+        "coverage": {
+          "linked_posts_count": 1,
+          "deduplicated_videos_count": 1,
+          "resolved_count": 1,
+          "matched_period_count": 1,
+          "unresolved_count": 0,
+          "is_complete": true
+        },
+        "totals": {
+          "views": { "value": 0, "status": "complete", "available_count": 1, "missing_count": 0 },
+          "likes": { "value": 0, "status": "complete", "available_count": 1, "missing_count": 0 },
+          "comments": { "value": 0, "status": "complete", "available_count": 1, "missing_count": 0 },
+          "shares": { "value": 0, "status": "complete", "available_count": 1, "missing_count": 0 }
+        },
+        "top_videos": [
+          {
+            "post_id": "55555555-5555-4555-8555-555555555555",
+            "post_title": "Video Baru Upload",
+            "video_id": "7438291045678900001",
+            "video_url": "https://www.tiktok.com/@kedainobnob/video/7438291045678900001",
+            "published_at": "2026-11-19T15:50:00+07:00",
+            "published_date_wib": "2026-11-19",
+            "metrics": { "views": 0, "likes": 0, "comments": 0, "shares": 0 },
+            "metrics_state": "ok"
+          }
+        ],
+        "unresolved_videos": []
+      },
+      "meta": {
+        "fetched_at": "2026-11-19T16:00:00+07:00",
+        "fetch_status": "ok",
+        "source": "simulation_fixture",
+        "is_stale": false,
+        "error": null
+      }
+    },
+    "no_linked_videos": {
+      "data": {
+        "state": "no_linked_videos",
+        "period": {
+          "preset": "7d",
+          "from_wib": "2026-11-13",
+          "to_wib": "2026-11-19",
+          "timezone": "Asia/Jakarta"
+        },
+        "coverage": {
+          "linked_posts_count": 0,
+          "deduplicated_videos_count": 0,
+          "resolved_count": 0,
+          "matched_period_count": 0,
+          "unresolved_count": 0,
+          "is_complete": true
+        },
+        "totals": {
+          "views": { "value": null, "status": "empty", "available_count": 0, "missing_count": 0 },
+          "likes": { "value": null, "status": "empty", "available_count": 0, "missing_count": 0 },
+          "comments": { "value": null, "status": "empty", "available_count": 0, "missing_count": 0 },
+          "shares": { "value": null, "status": "empty", "available_count": 0, "missing_count": 0 }
+        },
+        "top_videos": [],
+        "unresolved_videos": []
+      },
+      "meta": {
+        "fetched_at": "2026-11-19T16:00:00+07:00",
+        "fetch_status": "ok",
+        "source": "simulation_fixture",
+        "is_stale": false,
+        "error": null
+      }
+    },
+    "empty_in_period": {
+      "data": {
+        "state": "empty_in_period",
+        "period": {
+          "preset": "custom",
+          "from_wib": "2026-11-01",
+          "to_wib": "2026-11-05",
+          "timezone": "Asia/Jakarta"
+        },
+        "coverage": {
+          "linked_posts_count": 2,
+          "deduplicated_videos_count": 2,
+          "resolved_count": 2,
+          "matched_period_count": 0,
+          "unresolved_count": 0,
+          "is_complete": true
+        },
+        "totals": {
+          "views": { "value": null, "status": "empty", "available_count": 0, "missing_count": 0 },
+          "likes": { "value": null, "status": "empty", "available_count": 0, "missing_count": 0 },
+          "comments": { "value": null, "status": "empty", "available_count": 0, "missing_count": 0 },
+          "shares": { "value": null, "status": "empty", "available_count": 0, "missing_count": 0 }
+        },
+        "top_videos": [],
+        "unresolved_videos": []
+      },
+      "meta": {
+        "fetched_at": "2026-11-19T16:00:00+07:00",
+        "fetch_status": "ok",
+        "source": "simulation_fixture",
+        "is_stale": false,
+        "error": null
+      }
+    },
+    "failed_without_cache": {
+      "data": {
+        "state": "failed",
+        "period": {
+          "preset": "7d",
+          "from_wib": "2026-11-13",
+          "to_wib": "2026-11-19",
+          "timezone": "Asia/Jakarta"
+        },
+        "coverage": {
+          "linked_posts_count": 2,
+          "deduplicated_videos_count": 2,
+          "resolved_count": 0,
+          "matched_period_count": 0,
+          "unresolved_count": 2,
+          "is_complete": false
+        },
+        "totals": {
+          "views": { "value": null, "status": "unavailable", "available_count": 0, "missing_count": 2 },
+          "likes": { "value": null, "status": "unavailable", "available_count": 0, "missing_count": 2 },
+          "comments": { "value": null, "status": "unavailable", "available_count": 0, "missing_count": 2 },
+          "shares": { "value": null, "status": "unavailable", "available_count": 0, "missing_count": 2 }
+        },
+        "top_videos": [],
+        "unresolved_videos": [
+          {
+            "post_id": "22222222-2222-4222-8222-222222222222",
+            "post_title": "Review Menu Baru Kopi Susu",
+            "video_id": "7438291045678901234",
+            "reason": "tiktok_fetch_failed"
+          },
+          {
+            "post_id": "33333333-3333-4333-8333-333333333333",
+            "post_title": "Teaser Minuman Sore",
+            "video_id": "7438291045678905678",
+            "reason": "tiktok_fetch_failed"
+          }
+        ]
+      },
+      "meta": {
+        "fetched_at": null,
+        "fetch_status": "failed",
+        "source": "simulation_fixture",
+        "is_stale": false,
+        "error": {
+          "code": "TIKTOK_UNAVAILABLE",
+          "message": "Tidak dapat mengambil data statistik TikTok saat ini."
+        }
+      }
+    }
+  }
+}
